@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PChome DJI 獎勵金收支管理</title>
+    <title>PChome Insta360 獎勵金收支管理</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
@@ -14,7 +14,7 @@
 
     <nav class="bg-blue-800 p-4 shadow-md">
         <div class="container mx-auto flex items-center justify-between">
-            <div class="text-white font-bold text-xl tracking-wider"><i class="fas fa-camera mr-2"></i>PChome DJI 獎勵金收支管理系統 <span class="text-xs bg-purple-500 text-white px-2 py-1 rounded ml-2"><i class="fas fa-users mr-1"></i>V5 預載共用版</span></div>
+            <div class="text-white font-bold text-xl tracking-wider"><i class="fas fa-camera mr-2"></i>PChome Insta360 獎勵金收支管理系統 <span class="text-xs bg-purple-500 text-white px-2 py-1 rounded ml-2"><i class="fas fa-users mr-1"></i>PM共用</span></div>
             <div class="text-white text-sm bg-blue-700 py-1 px-3 rounded-full">PM 團隊專用</div>
         </div>
     </nav>
@@ -110,7 +110,7 @@
                             <option value="站外行銷">站外廣告行銷 (支出)</option>
                             <option value="站內行銷">站內行銷活動 (支出)</option>
                             <option value="折價回饋">折價回饋 (支出)</option>
-                            <option value="獎勵金">DJI 獎勵金 (收入)</option>
+                            <option value="獎勵金">Insta360 獎勵金 (收入)</option>
                             <option value="其他">其他</option>
                         </select>
                     </div>
@@ -188,7 +188,7 @@
                         <option value="站外行銷">站外廣告行銷 (支出)</option>
                         <option value="站內行銷">站內行銷活動 (支出)</option>
                         <option value="折價回饋">折價回饋 (支出)</option>
-                        <option value="獎勵金">DJI 獎勵金 (收入)</option>
+                        <option value="獎勵金">Insta360 獎勵金 (收入)</option>
                         <option value="其他">其他</option>
                     </select>
                 </div>
@@ -279,10 +279,10 @@ const sharedData = [
 ];
 
 // 初始化載入
-let records = JSON.parse(localStorage.getItem('djiLedgerData'));
+let records = JSON.parse(localStorage.getItem('insta360LedgerData'));
 if (!records || records.length === 0) {
     records = sharedData; // 若無本機資料，自動載入共用資料
-    localStorage.setItem('djiLedgerData', JSON.stringify(records));
+    localStorage.setItem('insta360LedgerData', JSON.stringify(records));
 }
 
 let chartInstanceMonthly = null;
@@ -368,7 +368,7 @@ function deleteRecord(id) {
 }
 
 // 存入 LocalStorage
-function saveData() { localStorage.setItem('djiLedgerData', JSON.stringify(records)); }
+function saveData() { localStorage.setItem('insta360LedgerData', JSON.stringify(records)); }
 
 // 匯出 Excel
 function exportData() {
@@ -383,7 +383,7 @@ function exportData() {
     const worksheet = XLSX.utils.json_to_sheet(exportArr);
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "收支明細");
-    XLSX.writeFile(workbook, `DJI_獎勵金收支紀錄_${new Date().toISOString().slice(0,10)}.xlsx`);
+    XLSX.writeFile(workbook, `Insta360_獎勵金收支紀錄_${new Date().toISOString().slice(0,10)}.xlsx`);
 }
 
 // 匯入資料
